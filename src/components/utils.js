@@ -15,3 +15,11 @@ export const getArticle = (article_id) => {
       return article;
     });
 };
+
+export const getComments = (article_id) => {
+  return axios
+    .get(`${baseUrl}/articles/${article_id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments;
+    });
+};

@@ -9,3 +9,9 @@
 .article-poster{
     background-color: lightgray;
 }
+
+.comment-card {
+    background-color: antiquewhite;
+    padding: 20px;
+    margin: 10px;
+}
