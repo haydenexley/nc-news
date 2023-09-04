@@ -1,6 +1,7 @@
 import {useParams} from "react-router-dom"
 import { getArticle } from './utils';
 import { useState, useEffect } from 'react';
+import CommentList from './CommentsList'
 
 const ArticlePoster = () => {
   const {article_id} = useParams()
@@ -20,7 +21,8 @@ const ArticlePoster = () => {
   }, []);
 
   if (loading)  return <p>loading...</p>
-  return <section className="article-poster">
+  return <>
+  <section className="article-poster">
     <p>{article.topic}</p>
     <p>{article.votes} 🗳</p>
     <h1>{article.title}</h1>
@@ -29,6 +31,8 @@ const ArticlePoster = () => {
     <img src={article.article_img_url} />
     <p>{article.body}</p>
   </section>
+  <CommentList article_id={article_id}/>
+  </>
 }
 
 export default ArticlePoster
