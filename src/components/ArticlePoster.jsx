@@ -23,13 +23,17 @@ const ArticlePoster = () => {
   if (loading)  return <p>loading...</p>
   return <>
   <section className="article-poster">
+    <ul>
+      <li>
     <p>{article.topic}</p>
     <p>{article.votes} 🗳</p>
     <h1>{article.title}</h1>
     <h3>by {article.author}</h3>
     <h4>date: {article.created_at}</h4>
-    <img src={article.article_img_url} />
+    <img src={article.article_img_url} alt={article.title}/>
     <p>{article.body}</p>
+    </li>
+    </ul>
   </section>
   <CommentList article_id={article_id}/>
   </>
