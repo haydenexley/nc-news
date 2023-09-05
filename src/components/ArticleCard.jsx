@@ -7,10 +7,10 @@ const ArticleCard = ({ article }) => {
     <p className="article-card-topic">{article.topic}</p>
     <h3>{article.title}</h3>
     <p className="article-card-author">{article.author}</p>
-    <p>{article.votes}🗳</p>
+    <p>Votes: {article.votes}🗳</p>
     <p>Comments: {article.comment_count}</p>
   </section>
-  // </Link>
+  </Link>
 };
 
 export default ArticleCard

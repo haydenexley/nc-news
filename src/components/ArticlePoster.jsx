@@ -2,6 +2,7 @@ import {useParams} from "react-router-dom"
 import { getArticle } from './utils';
 import { useState, useEffect } from 'react';
 import CommentList from './CommentsList'
+import Votes from "./Votes";
 
 const ArticlePoster = () => {
   const {article_id} = useParams()
@@ -26,7 +27,7 @@ const ArticlePoster = () => {
     <ul>
       <li>
     <p>{article.topic}</p>
-    <p>{article.votes} 🗳</p>
+    <Votes votes={article.votes} article_id={article.article_id}/>
     <h1>{article.title}</h1>
     <h3>by {article.author}</h3>
     <h4>date: {article.created_at}</h4>
