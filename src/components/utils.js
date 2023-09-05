@@ -31,3 +31,11 @@ export const getUsers = () => {
     return users;
   });
 };
+
+export const patchVotes = (article_id, inc_votes) => {
+  return apiClient
+    .patch(`/articles/${article_id}`, { inc_votes })
+    .then((data) => {
+      return data;
+    });
+};
