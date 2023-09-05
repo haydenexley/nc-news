@@ -25,3 +25,9 @@ export const getComments = (article_id) => {
       return comments;
     });
 };
+
+export const getUsers = () => {
+  return apiClient.get("/users").then(({ data: { users } }) => {
+    return users;
+  });
+};
