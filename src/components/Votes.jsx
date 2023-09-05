@@ -9,7 +9,6 @@ const Votes = ({ votes, article_id }) => {
 
     patchVotes(article_id, inc).then(({ data: { article: { votes } } }) => {
       setCurrentVotes(votes);
-      console.log(votes);
     });
   };
 
