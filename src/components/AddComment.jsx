@@ -28,7 +28,7 @@ const AddComment = ({ article_id, comments, setComments }) => {
       <form onSubmit={handleComment}>
       <label htmlFor="add-comment">Add comment: </label>
       <input value={commentInput} id="add-comment" onChange={(event) => setCommentInput(event.target.value)} required></input>
-      <button>Comment</button>
+      <button type="submit">Comment</button>
     </form>
   </>
 };
