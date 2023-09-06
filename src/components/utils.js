@@ -4,10 +4,12 @@ const apiClient = axios.create({
   baseURL: "https://haydens-news.onrender.com/api/",
 });
 
-export const getArticles = () => {
-  return apiClient.get(`/articles`).then(({ data: { articles } }) => {
-    return articles;
-  });
+export const getArticles = (topic) => {
+  return apiClient
+    .get(`/articles?topic=${topic}`)
+    .then(({ data: { articles } }) => {
+      return articles;
+    });
 };
 
 export const getArticle = (article_id) => {
@@ -46,4 +48,10 @@ export const postComment = (article_id, body, username) => {
     .then(({ data: { comment } }) => {
       return comment;
     });
+};
+
+export const getTopics = () => {
+  return apiClient.get(`/topics`).then(({ data: { topics } }) => {
+    return topics;
+  });
 };
