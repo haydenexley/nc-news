@@ -9,7 +9,6 @@ const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const {urlTopic} = useParams()
-  console.log(urlTopic)
 
   useEffect(() => {
     if (urlTopic) {
