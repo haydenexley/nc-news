@@ -9,7 +9,7 @@ const navigate = useNavigate()
 const handleTopic = (event) => {
   event.preventDefault()
   setTopic(event.target.value)
-  navigate(`/${event.target.value}`)
+  navigate(`/topics/${event.target.value}`)
 
 }
 
@@ -23,7 +23,7 @@ useEffect(() => {
   return <>
   <label htmlFor="topics">Topic:</label>
   <select value ={topic}name="topics" id="topics" onChange={handleTopic}>
-    <option value="" key='All'>All</option>
+    <option value='All' key='All'>All</option>
    {topics.map((topic_name) => {
         return <option key={topic_name} value={topic_name}>{topic_name}</option>
     })}

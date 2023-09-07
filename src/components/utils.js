@@ -5,6 +5,7 @@ const apiClient = axios.create({
 });
 
 export const getArticles = (topic) => {
+  if (topic === "All") topic = "";
   return apiClient
     .get(`/articles?topic=${topic}`)
     .then(({ data: { articles } }) => {

@@ -8,7 +8,7 @@ const {user} = useContext(UserContext)
     return (
     <div>
         <h1 id="header-title">NC NEWS</h1>
-        <Link to="/">Home</Link>
+        <Link to="/topics/All">Home</Link>
         <h2>Hi there, {user[0].name}</h2>
         
       </div>
