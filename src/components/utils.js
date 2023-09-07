@@ -4,10 +4,10 @@ const apiClient = axios.create({
   baseURL: "https://haydens-news.onrender.com/api/",
 });
 
-export const getArticles = (topic) => {
+export const getArticles = (topic, searchParams) => {
   if (topic === "All") topic = "";
   return apiClient
-    .get(`/articles?topic=${topic}`)
+    .get(`/articles?topic=${topic}`, { params: searchParams })
     .then(({ data: { articles } }) => {
       return articles;
     });
