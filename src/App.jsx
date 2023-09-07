@@ -10,7 +10,6 @@ import ErrorPage from './components/ErrorPage';
 
 function App() {
   const [apiError, setApiError] = useState(null)
-  console.log(apiError)
   const {user} = useContext(UserContext)
   if (user.length === 0) {
     return <>
@@ -19,8 +18,8 @@ function App() {
     </>
   } else if (apiError) {
     return<>
-    <Header/>
-    <ErrorPage apiError={apiError}/>
+    <Header apiError={apiError} setApiError={setApiError}/>
+    <ErrorPage setApiError={setApiError} apiError={apiError}/>
     </>
   }
   return (

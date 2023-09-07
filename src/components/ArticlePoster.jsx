@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import CommentList from './CommentsList'
 import Votes from "./Votes";
 
-const ArticlePoster = ({setApiError}) => {
+const ArticlePoster = ({apiError, setApiError}) => {
   const {article_id} = useParams()
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
@@ -15,8 +15,8 @@ const ArticlePoster = ({setApiError}) => {
         setArticle(fetchedArticle);
         setLoading(false);
       })
-      .catch((err) => {
-        setApiError([err])
+      .catch(({response}) => {
+        setApiError(response)
         setLoading(false);
       });
   }, []);

@@ -6,7 +6,7 @@ import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import SortingDropdowns from './SortingDropdowns';
 import ErrorPage from './ErrorPage';
 
-const ArticlesList = ({setApiError}) => {
+const ArticlesList = ({apiError, setApiError}) => {
   const [topic, setTopic] = useState('')
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,13 +28,13 @@ const ArticlesList = ({setApiError}) => {
         setLoading(false);
       })
       .catch(({response}) => {
-        console.log(response)
+        setApiError(response)
         
         setLoading(false);
         return <p>There was an error!</p>
         
       });
-  }, [topic, searchParams]);
+  }, [topic, searchParams, urlTopic]);
 
   if (loading)  return <p>loading...</p>
   return <>
