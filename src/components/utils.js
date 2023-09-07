@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "https://haydens-news.onrender.com/api/",
+  baseURL: "http://localhost:9090/api",
 });
 
 export const getArticles = (topic, searchParams) => {
@@ -54,5 +54,11 @@ export const postComment = (article_id, body, username) => {
 export const getTopics = () => {
   return apiClient.get(`/topics`).then(({ data: { topics } }) => {
     return topics;
+  });
+};
+
+export const deleteComment = (comment_id) => {
+  return apiClient.delete(`/comments/${comment_id}`).then(({ status }) => {
+    return status;
   });
 };

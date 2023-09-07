@@ -24,7 +24,7 @@ const CommentsList = ({article_id}) => {
   <h4>Comments</h4>
   <AddComment article_id={article_id} comments={comments} setComments={setComments}/>
   <ol className="comments-list">
-    {comments.map((comment) =>  <CommentCard key={`${comment.comment_id}`} comment={comment} />)}
+    {comments.map((comment) =>  <CommentCard key={`${comment.comment_id}`} comment={comment} setComments={setComments} />)}
   </ol>
   </>
   

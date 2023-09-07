@@ -16,7 +16,8 @@ const AddComment = ({ article_id, comments, setComments }) => {
     setComments([optimisticComment, ...comments])
     event.target.disabled = true
     
-    postComment(article_id, commentInput, userData.username).then(() => {
+    postComment(article_id, commentInput, userData.username).then((comment) => {
+      setComments([comment, ...comments])
       setCommentInput("");
       event.target.disabled = false
         
