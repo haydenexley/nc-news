@@ -20,8 +20,14 @@ const Votes = ({ votes, article_id }) => {
     <div className="votes">
       <p>Votes: {currentVotes} 🗳</p>
       {error && <p>{error}</p>}
-      <button onClick={() => userVote(1)}>+</button>
-      <button onClick={() => userVote(-1)}>-</button>
+      <button onClick={(event) => {
+        userVote(1) 
+        event.target.disabled = true
+        }}>+</button>
+      <button onClick={(event) => {
+        userVote(-1)
+        event.target.disabled=true
+        }}>-</button>
     </div>
   );
 };
