@@ -21,9 +21,6 @@ const CommentCard = ({comment}) => {
   }
   let deleteButton
   const {user} = useContext(UserContext)
-  if (error) {
-    return <p>{error}</p>
-  }
 
   if (deleted) {
     return <p>{deleted}</p>
@@ -32,6 +29,18 @@ const CommentCard = ({comment}) => {
   if ( comment.author === user[0].username){
      deleteButton = <button onClick={handleClick}>❌</button>
    }
+   if (error) {
+    return <section role="comment-card" className='comment-card'>
+    <li>
+          <p>{error}</p>
+          <p>{comment.created_at}</p>
+          <p>{comment.author}</p>
+          <p>{comment.body}</p>
+          <p>{comment.votes} 🗳</p>
+          {deleteButton}
+      </li>
+      </section>
+  }
   return   <section role="comment-card" className='comment-card'>
       <li>
             <p>{comment.created_at}</p>

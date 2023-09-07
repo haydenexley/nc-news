@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { getArticles } from './utils';
 import ArticleCard from './ArticleCard'
 import TopicsDropdown from './TopicsDropdown';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import SortingDropdowns from './SortingDropdowns';
+import ErrorPage from './ErrorPage';
 
-const ArticlesList = () => {
+const ArticlesList = ({setApiError}) => {
   const [topic, setTopic] = useState('')
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +27,9 @@ const ArticlesList = () => {
         setArticles(fetchedArticles);
         setLoading(false);
       })
-      .catch(() => {
+      .catch(({response}) => {
+        console.log(response)
+        
         setLoading(false);
         return <p>There was an error!</p>
         
