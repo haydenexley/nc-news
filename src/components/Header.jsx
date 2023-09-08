@@ -15,15 +15,15 @@ const Header = ({ apiError, setApiError }) => {
       <AppBar sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
 
           <Typography variant="h3">🗞 NC NEWS 🗞</Typography>
-          <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}> 
+          <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', p: 1}}> 
+          <Typography variant="button" sx={{mt: 2}}>
+            Hi there, {user[0].name}
+          </Typography>
           <MenuItem sx={{px: 4}}>
           <Link style={{ color: 'inherit', textDecoration: "none",  }} to="/topics/All" onClick={handleClick}>
             <Home /> 
           </Link>
         </MenuItem>
-          <Typography variant="button">
-            Hi there, {user[0].name}
-          </Typography>
           </div>
 
 
