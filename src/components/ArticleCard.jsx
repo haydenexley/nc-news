@@ -7,7 +7,6 @@ const ArticleCard = ({ article }) => {
   return (
   <Card sx={{p: 2, m: 2}}>
       <Link style={{ color: 'inherit', textDecoration: "none",  }} to={`/articles/${article.article_id}`} >
-  <section className="article-card">
   <Stack spacing={4} direction="row" sx={{ color: 'action.active', p: 3 }}>
   <Chip sx={{m: 1, p: 2}} label={article.topic}/>
       <Badge badgeContent={article.votes} color="primary" showZero>
@@ -20,7 +19,6 @@ const ArticleCard = ({ article }) => {
     <Typography sx={{m: 1}} variant="h5">{article.title}</Typography>
     <Typography sx={{m: 1}} variant='subtitle1'>by {article.author}</Typography>
 
-  </section>
   </Link>
   </Card>
 

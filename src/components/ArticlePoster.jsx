@@ -3,6 +3,7 @@ import { getArticle } from './utils';
 import { useState, useEffect } from 'react';
 import CommentList from './CommentsList'
 import Votes from "./Votes";
+import { Box, Chip, Container, Typography } from "@mui/material";
 
 const ArticlePoster = ({apiError, setApiError}) => {
   const {article_id} = useParams()
@@ -23,19 +24,19 @@ const ArticlePoster = ({apiError, setApiError}) => {
 
   if (loading)  return <p>loading...</p>
   return <>
-  <section className="article-poster">
-    <ul>
-      <li>
-    <p>{article.topic}</p>
+  <Container sx={{width: '90vw', mt: 20, bgcolor: '#dedede', display: "flex", flexDirection: 'column', p: 2}}>
+    <Typography sx={{py: 4}} variant="h3">{article.title}</Typography>
+    <Chip sx={{width: '9em'}}label={article.topic}></Chip>
+    <Typography variant='caption'>by {article.author}</Typography>
+    <Typography variant='caption'>on {article.created_at}</Typography>
+    <Box component="img" sx={{width: '60vw'}} src={article.article_img_url}/>
+    
+    <Typography variant='body2'>{article.body}</Typography>
+
     <Votes votes={article.votes} article_id={article.article_id}/>
-    <h1>{article.title}</h1>
-    <h3>by {article.author}</h3>
-    <h4>date: {article.created_at}</h4>
-    <img src={article.article_img_url} alt={article.title}/>
-    <p>{article.body}</p>
-    </li>
-    </ul>
-  </section>
+
+
+  </Container>
   <CommentList article_id={article_id}/>
   </>
 }
