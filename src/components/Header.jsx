@@ -12,7 +12,7 @@ const Header = ({ apiError, setApiError }) => {
 
   if (user.length !== 0) {
     return (
-      <AppBar>
+      <AppBar sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
 
           <Typography variant="h3">🗞 NC NEWS 🗞</Typography>
           <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}> 
@@ -31,7 +31,7 @@ const Header = ({ apiError, setApiError }) => {
     )
   } else {
     return (
-      <AppBar>
+      <AppBar sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <Typography variant="h3">🗞 NC NEWS 🗞</Typography>
       </AppBar>
     )

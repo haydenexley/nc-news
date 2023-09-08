@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {  getTopics } from './utils'
 import { useNavigate } from 'react-router-dom'
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 
 const TopicsDropdown = ({topic, setTopic}) => {
 const [topics, setTopics] = useState([])
@@ -20,15 +21,20 @@ useEffect(() => {
   })
 }, []) 
 
-  return <>
-  <label htmlFor="topics">Topic:</label>
-  <select value ={topic}name="topics" id="topics" onChange={handleTopic}>
-    <option value='All' key='All'>All</option>
-   {topics.map((topic_name) => {
-        return <option key={topic_name} value={topic_name}>{topic_name}</option>
+  return (<>
+        <FormControl fullWidth>
+        <InputLabel>Topics</InputLabel>
+        <Select
+          label="topics" value ={topic}name="topics" id="topics" onChange={handleTopic}
+        >
+          <MenuItem value='All' key='All'>all</MenuItem>
+          {topics.map((topic_name) => {
+        return <MenuItem key={topic_name} value={topic_name}>{topic_name}</MenuItem>
     })}
-  </select>
-</>
+        </Select>
+      </FormControl>
+      </>
+  )
 }
 
 export default TopicsDropdown
