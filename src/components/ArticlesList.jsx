@@ -50,7 +50,7 @@ const ArticlesList = ({apiError, setApiError}) => {
     </FormControl>
     </Box>
 
-  <Container sx={{}}>
+  <Container>
   {articles.map((article) =>  <ArticleCard key={`${article.id}-${article.title}`} article={article} />)}
   </Container>
   </>

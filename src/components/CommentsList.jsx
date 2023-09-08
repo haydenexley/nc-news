@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getComments } from './utils';
 import CommentCard from './CommentCard'
 import AddComment from './AddComment';
+import { Container, Typography } from '@mui/material';
 
 const CommentsList = ({article_id}) => {
   const [comments, setComments] = useState([]);
@@ -21,11 +22,14 @@ const CommentsList = ({article_id}) => {
 
   if (loading)  return <p>loading...</p>
   return <>
-  <h4>Comments</h4>
+  <Container>
+  <Typography variant='h5'>Comments</Typography>
   <AddComment article_id={article_id} comments={comments} setComments={setComments}/>
-  <ol className="comments-list">
-    {comments.map((comment) =>  <CommentCard key={`${comment.comment_id}`} comment={comment} setComments={setComments} />)}
-  </ol>
+  <Container>
+  {comments.map((comment) =>  <CommentCard key={`${comment.comment_id}`} comment={comment} setComments={setComments} />)}
+  </Container>
+  </Container>
+
   </>
   
     
