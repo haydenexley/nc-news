@@ -1,35 +1,50 @@
 import { useState } from "react";
 import { patchVotes } from "./utils";
+import { Badge, Button, Stack } from "@mui/material";
+import { Favorite, ThumbDown, ThumbUp } from "@mui/icons-material";
 
 const Votes = ({ votes, article_id }) => {
   const [currentVotes, setCurrentVotes] = useState(votes);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
+  const [upButtonDisabled, setUpButtonDisabled] = useState(false);
+  const [downButtonDisabled, setDownButtonDisabled] = useState(false);
 
   const userVote = (inc) => {
-    setCurrentVotes((localVotes) => localVotes + inc)
+    setCurrentVotes((localVotes) => localVotes + inc);
 
-    patchVotes(article_id, inc).catch(() => {
-      setError("Woopsie! There was an error voting! Please try again later...")
-    })
+    patchVotes(article_id, inc)
+      .catch(() => {
+        setError("Woopsie! There was an error voting! Please try again later...");
+      });
   };
-  if (error){
-    return <p>{error}</p>
+
+  if (error) {
+    return <p>{error}</p>;
   }
 
   return (
-    <div className="votes">
-      <p>Votes: {currentVotes} 🗳</p>
+    <>
       {error && <p>{error}</p>}
-      <button onClick={(event) => {
-        userVote(1) 
-        event.target.disabled = true
-        }}>+</button>
-      <button onClick={(event) => {
-        userVote(-1)
-        event.target.disabled=true
-        }}>-</button>
-    </div>
+      <Stack spacing={4} direction="row" sx={{ color: 'action.active', p: 3 }}>
+      <Badge badgeContent={currentVotes} color="primary" showZero>
+        <Favorite color="action" />
+      </Badge>
+        <Button onClick={() => {
+          userVote(1);
+          setUpButtonDisabled(true);
+        }} disabled={upButtonDisabled}>
+          <ThumbUp />
+        </Button>
+        <Button onClick={() => {
+          userVote(-1);
+          setDownButtonDisabled(true);
+        }} disabled={downButtonDisabled}>
+          <ThumbDown />
+        </Button>
+      </Stack>
+    </>
   );
 };
 
 export default Votes;
+

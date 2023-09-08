@@ -1,6 +1,8 @@
 import { useContext, useState } from "react"
 import { UserContext } from "../contexts/User"
 import { deleteComment } from "./utils"
+import { Badge, Button, Card, Container, Typography } from "@mui/material"
+import { Favorite, Delete } from "@mui/icons-material"
 
 const CommentCard = ({comment}) => {
   const [error, setError] = useState("")
@@ -27,7 +29,7 @@ const CommentCard = ({comment}) => {
   }
 
   if ( comment.author === user[0].username){
-     deleteButton = <button onClick={handleClick}>❌</button>
+     deleteButton = <Button color='error' onClick={handleClick}><Delete/></Button>
    }
    if (error) {
     return <section role="comment-card" className='comment-card'>
@@ -41,15 +43,19 @@ const CommentCard = ({comment}) => {
       </li>
       </section>
   }
-  return   <section role="comment-card" className='comment-card'>
-      <li>
-            <p>{comment.created_at}</p>
-            <p>{comment.author}</p>
-            <p>{comment.body}</p>
-            <p>{comment.votes} 🗳</p>
+  return   <Container>
+      <Card sx={{m: 2, bgcolor: '#bbdefb', p: 3}}>
             {deleteButton}
-        </li>
-  </section>
+            <Typography variant='caption'>{comment.created_at}</Typography>
+            <Typography variant='caption'>{comment.author}</Typography>
+            <Typography variant='body1'>{comment.body}</Typography>
+            <Badge badgeContent={comment.votes} color="primary" showZero>
+        <Favorite color="action" />
+      </Badge>
+  </Card>
+
+  </Container>
+
 
   
 }
