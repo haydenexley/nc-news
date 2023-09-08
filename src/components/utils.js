@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:9090/api",
+  baseURL: "https://haydens-news.onrender.com/api",
 });
 
 export const getArticles = (topic, searchParams) => {
