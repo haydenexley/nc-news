@@ -21,7 +21,7 @@ const Header = ({ apiError, setApiError }) => {
             <Home /> 
           </Link>
         </MenuItem>
-          <Typography variant="h6">
+          <Typography variant="button">
             Hi there, {user[0].name}
           </Typography>
           </div>
