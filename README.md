@@ -6,7 +6,7 @@
 
 # Summary
 
-This is an Front-end project designed during project week for the following back-end project: (https://github.com/haydenexley/be-nc-news). This is a front-end service that allows interactin with my backend api. Users can log in, view articles, sort articles, filter articles, post comments, delete comments and vote on an article.
+This is an Front-end project designed during project week for the following back-end project: (https://github.com/haydenexley/be-nc-news). This is a front-end service that allows interaction with my backend api. Users can log in, view articles, sort articles, filter articles, post comments, delete comments and vote on an article.
 
 # Logging in
 
