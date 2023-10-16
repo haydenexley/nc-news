@@ -29,7 +29,7 @@ const CommentCard = ({comment}) => {
   }
 
   if ( comment.author === user[0].username){
-     deleteButton = <Button color='error' onClick={handleClick}><Delete/></Button>
+     deleteButton = <Button className="bin-button" color='error' onClick={handleClick}><Delete/></Button>
    }
    if (error) {
     return <section role="comment-card" className='comment-card'>
@@ -44,12 +44,13 @@ const CommentCard = ({comment}) => {
       </section>
   }
   return   <Container>
-      <Card sx={{m: 2, bgcolor: '#bbdefb', p: 3}}>
+      <Card className="comment-card" sx={{m: 2, bgcolor: '#bbdefb', p: 2}}>
             {deleteButton}
-            <Typography variant='caption'>{comment.created_at}</Typography>
-            <Typography variant='caption'>{comment.author}</Typography>
+            <Typography variant='caption'>{new Date(comment.created_at).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' })}</Typography>
+
+            <Typography fontWeight={"bold"} display={"block"} variant='caption'>{comment.author}</Typography>
             <Typography variant='body1'>{comment.body}</Typography>
-            <Badge badgeContent={comment.votes} color="primary" showZero>
+            <Badge sx={{mt: 2}} className="comment-badge" badgeContent={comment.votes} color="primary" showZero>
         <Favorite color="action" />
       </Badge>
   </Card>
